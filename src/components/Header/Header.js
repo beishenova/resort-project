@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,9 +14,12 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { Button } from '@material-ui/core';
+import { Button, ClickAwayListener } from '@material-ui/core';
 import { useAuth } from '../../contexts/AuthContext';
 import './Header.css'
+import { Link } from 'react-router-dom';
+import Search from '@material-ui/icons/Search';
+import { useRooms } from '../../contexts/RoomsContext';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -86,7 +89,10 @@ export default function Header() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    const [searchActive, setSearchActive] = React.useState(false);
 
+  
+  const { cartData, fetchSearchRooms } = useRooms()
   const { registerUser, user, logOut } = useAuth();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -106,6 +112,9 @@ export default function Header() {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+  const handleSearch = (e) => {
+    fetchSearchRooms(e.target.value);
   };
 
   const menuId = 'primary-search-account-menu';
@@ -176,10 +185,12 @@ export default function Header() {
             aria-label="open drawer"
           >
           </IconButton>
+          <Link to="/">
           <Typography className={classes.title} variant="h6" noWrap>
             Ressort
           </Typography>
-          <div className={classes.search}>
+          </Link>
+          {/* <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -191,7 +202,30 @@ export default function Header() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          </div>
+          </div> */}
+          <ClickAwayListener onClickAway={() => setSearchActive(false)}>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                onFocus={() => setSearchActive(true)}
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                onChange={handleSearch}
+                inputProps={{ "aria-label": "search" }}
+              />
+              {searchActive && (
+                <div className={classes.searchBox}>
+                  {/* <Search /> */}
+                </div>
+              )}
+            </div>
+          </ClickAwayListener>
+
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
           {user ? (

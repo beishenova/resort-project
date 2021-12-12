@@ -41,7 +41,7 @@ const AddRoom = () => {
    };
    //   console.log(form);
    return (
-     <>
+     <div className="adding">
        <h1>Add new Room</h1>
        <Grid container className="main">
          <Grid item md={5}>
@@ -94,7 +94,7 @@ const AddRoom = () => {
            </Paper>
          </Grid>
        </Grid>
-     </>
+     </div>
    );
 }
 
