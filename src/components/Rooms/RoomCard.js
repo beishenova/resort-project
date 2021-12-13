@@ -59,7 +59,7 @@ const RoomCard = ({ room, cart }) => {
               {room.description}
             </Typography>
             <Typography variant="subtitle1" color="textPrimary" component="p">
-              Цена: {room.price} сом
+              Цена: {room.price} сом за сутки
             </Typography>
             <Typography variant="subtitle1" color="textPrimary" component="p">
               На {room.person} персоны
@@ -72,12 +72,11 @@ const RoomCard = ({ room, cart }) => {
           <ShoppingCartIcon />
         </IconButton> */}
         <Button
-         //  onClick={() => addAndDeleteRoomInCart(room)}
-          color="primary"
+          onClick={() => addAndDeleteRoomInCart(room)}
+          color="secondary"
           variant="contained"
-          startIcon={<Shop />}
         >
-          Купить
+          Забронировать 
         </Button>
       </CardActions>
     </Card>

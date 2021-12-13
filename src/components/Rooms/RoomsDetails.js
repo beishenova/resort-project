@@ -1,7 +1,6 @@
 import { Grid, Paper, makeStyles, Button } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
-import MySpinner from "../../shared/MySpinner";
 import {
   ImageWithZoom,
   Slider,
@@ -13,6 +12,7 @@ import {
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { grey, lightGreen } from "@material-ui/core/colors";
 import { useRooms } from "../../contexts/RoomsContext";
+import MySpinner from "../shared/MySpinner";
 
 const useStyles = makeStyles((theme) => ({
   custom_container: {
@@ -46,7 +46,7 @@ const RoomsDetails = () => {
     <Grid container>
       {roomDetails ? (
         <Grid container className={classes.custom_container}>
-          <Grid item md={4}>
+          <Grid item md={3}>
             <CarouselProvider
               naturalSlideWidth={2000}
               naturalSlideHeight={2020}
@@ -73,17 +73,17 @@ const RoomsDetails = () => {
                 <tbody>
                   <br />
                   <tr>
-                    <th>Title:</th>
+                    <th>Номер:</th>
                     <td>{roomDetails.title}</td>
                   </tr>
                   <br />
                   <tr>
-                    <th>Price:</th>
+                    <th>Цена за сутки:</th>
                     <td>{roomDetails.price}</td>
                   </tr>
                   <br />
                   <tr>
-                    <th>Description:</th>
+                    <th>Описание:</th>
                     <td>{roomDetails.description}</td>
                   </tr>
                   <br />

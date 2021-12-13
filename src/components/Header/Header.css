@@ -1,3 +1,9 @@
 .MuiPaper-root{
    background-color:azure
 }
+
+*{
+   text-decoration: none;
+   color: black;
+
+}

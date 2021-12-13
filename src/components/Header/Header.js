@@ -190,19 +190,6 @@ export default function Header() {
             Ressort
           </Typography>
           </Link>
-          {/* <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div> */}
           <ClickAwayListener onClickAway={() => setSearchActive(false)}>
             <div className={classes.search}>
               <div className={classes.searchIcon}>

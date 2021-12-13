@@ -1,14 +1,13 @@
-import { Grid } from "@material-ui/core";
-import React from "react";
-import RoomCard from "./RoomCard";
-
+import { Grid } from '@material-ui/core';
+import React from 'react';
+import RoomCard from './RoomCard';
 
 const RoomsList = ({ rooms }) => {
-  const cart = JSON.parse(localStorage.getItem("cart")) ?? false;
+  const cart = JSON.parse(localStorage.getItem('cart')) ?? false;
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={2}>
       {rooms.map((room) => (
-        <Grid item xs={4} key={room.id}>
+        <Grid item xs={3} key={room.id}>
           <RoomCard room={room} cart={cart} />
         </Grid>
       ))}
