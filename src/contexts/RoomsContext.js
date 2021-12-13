@@ -10,6 +10,7 @@ import {
   GET_ROOMS_ERROR,
   GET_ROOMS_LOADING,
   GET_ROOMS_SUCCESS,
+  GET_ROOM_DETAILS,
   GET_ROOM_ERROR,
   GET_ROOM_LOADING,
   GET_ROOM_SUCCESS,
@@ -20,7 +21,12 @@ import {
   roomLoading,
   roomSuccess,
 } from './actions/roomDetailsActions';
-import { roomsLoading, roomsSuccess, roomsError, setSearchResults } from './actions/roomsActions';
+import {
+  roomsLoading,
+  roomsSuccess,
+  roomsError,
+  setSearchResults,
+} from './actions/roomsActions';
 
 const roomsContext = createContext();
 
@@ -39,7 +45,7 @@ const initialState = {
   //   ? JSON.parse(localStorage.getItem('cart')).rooms.length
   //   : 0,
   // cart: {},
-  // searchResults: [],
+  searchResults: [],
 };
 
 const reducer = (state, action) => {
@@ -99,6 +105,13 @@ const reducer = (state, action) => {
       };
     }
 
+    case GET_ROOM_DETAILS: {
+      return {
+        ...state,
+        room: action.payload,
+      };
+    }
+
     case SET_SEARCH_RESULTS: {
       return {
         ...state,
@@ -141,6 +154,18 @@ const RoomsContext = ({ children }) => {
     }
   };
 
+  const getRoomDetails = async (id) => {
+    try {
+      const { data } = await axios(`$api/${id}`);
+      dispatch({
+        type: GET_ROOM_DETAILS,
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const addAndDeleteRoomInCart = (room) => {
     let cart = JSON.parse(localStorage.getItem('cart'));
     if (!cart) {
@@ -157,10 +182,6 @@ const RoomsContext = ({ children }) => {
     console.log(newRoom);
     newRoom.subPrice = calcSubPrice(newRoom);
 
-    //DELETE from cart
-    // let newCart = cart.products.filter(
-    //   (item) => item.product.id === product.id
-    // );
     const isItemInCart = checkItemInCart(cart.rooms, room.id);
     if (isItemInCart) {
       cart.rooms = cart.rooms.filter((item) => item.room.id !== room.id);
@@ -251,6 +272,15 @@ const RoomsContext = ({ children }) => {
       console.log(e.message);
     }
   };
+
+  const editRoom = (room) => {
+    try {
+      return $api.patch(`/${room.id}`, room);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const values = {
     rooms: state.rooms,
     loading: state.loading,
@@ -266,6 +296,8 @@ const RoomsContext = ({ children }) => {
     addAndDeleteRoomInCart,
     getCart,
     changeRoomCount,
+    editRoom,
+    getRoomDetails,
     fetchByParams,
     fetchSearchRooms,
     addRoom,

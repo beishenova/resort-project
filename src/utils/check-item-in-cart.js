@@ -1,2 +1,2 @@
-export const checkItemInCart = (cart,roomId) =>
-  cart.some(({ room }) => room.id === roomId);
+// export const checkItemInCart = (cart,roomId) =>
+//   cart.some(({ room }) => room.id === roomId);

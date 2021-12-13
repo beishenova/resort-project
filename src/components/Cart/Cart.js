@@ -1,19 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import { calcTotalPrice } from "../../utils/calc";
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
-import { IconButton } from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
-import { useRooms } from "../../contexts/RoomsContext";
-import { Link } from "react-router-dom";
+import { calcTotalPrice } from '../../utils/calc';
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import { IconButton } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { useRooms } from '../../contexts/RoomsContext';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   table: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 });
 
 const Cart = () => {
-  const { cart, getCart, changeRoomCount } = useRooms();
+  const { cart, getCart, changeRoomCount, cartData } = useRooms();
 
   useEffect(() => {
     getCart();
@@ -36,7 +36,7 @@ const Cart = () => {
 
   return (
     <div>
-      {cart && cart.rooms ? (
+      {cart && cart.rooms && cartData ? (
         <>
           {
             <TableContainer component={Paper}>
@@ -65,7 +65,7 @@ const Cart = () => {
                         <img
                           src={item.room.image}
                           alt=""
-                          style={{ width: "100px" }}
+                          style={{ width: '100px' }}
                         />
                       </TableCell>
 
@@ -91,16 +91,14 @@ const Cart = () => {
                 </TableBody>
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginLeft: "100px",
-                    padding: "10px",
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginLeft: '100px',
+                    padding: '10px',
                   }}
                 >
-                  <h3 align="center">
-                    Total : {calcTotalPrice(cart.rooms)}
-                  </h3>
+                  <h3 align="center">Total : {calcTotalPrice(cart.rooms)}</h3>
                   <Link to="/payment">
                     <Button variant="contained" color="secondary">
                       Оплатить
@@ -110,38 +108,6 @@ const Cart = () => {
               </Table>
             </TableContainer>
           }
-          {/* <table>
-            <thead>
-              <tr>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Count</th>
-                <th>Sub Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cart.products.map((item) => (
-                <tr key={item.product.id}>
-                  <td>
-                    <img
-                      src={item.product.image}
-                      alt=""
-                      style={{ width: "150px" }}
-                    />
-                  </td>
-                  <td>{item.product.title}</td>
-                  <td>{item.product.price}</td>
-                  <td>
-                    <input type="number" value={item.count} />
-                  </td>
-                  <td>{item.subPrice}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <h4>Total: {calcTotalPrice(cart.products)}</h4>
-          <button>Оплатить</button> */}
         </>
       ) : (
         <h1>Cart is empty</h1>

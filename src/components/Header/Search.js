@@ -1,10 +1,10 @@
-import React from "react";
-import { useEffect } from "react";
-import { useParams } from "react-router";
-import { useNavigate } from "react-router-dom";
-import { useRooms } from "../../contexts/RoomsContext";
+import React from 'react';
+import { useEffect } from 'react';
+import { useParams } from 'react-router';
+import { useNavigate } from 'react-router-dom';
+import { useRooms } from '../../contexts/RoomsContext';
 
-import "./Search.css";
+import './Search.css';
 
 const Search = () => {
   const { searchResults } = useRooms();
@@ -15,20 +15,19 @@ const Search = () => {
   };
   //   console.log(searchResults);
   return (
-    <>
+    searchResults && (
       <div className="search-box">
-        {searchResults.length &&
-          searchResults.map((item) => (
-            <p
-              onClick={() => {
-                goToRoomDetails(item.id);
-              }}
-            >
-              {item.title}
-            </p>
-          ))}
+        {searchResults.map((item) => (
+          <p
+            onClick={() => {
+              goToRoomDetails(item.id);
+            }}
+          >
+            {item.title}
+          </p>
+        ))}
       </div>
-    </>
+    )
   );
 };
 

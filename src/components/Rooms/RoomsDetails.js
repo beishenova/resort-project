@@ -1,6 +1,6 @@
-import { Grid, Paper, makeStyles, Button } from "@material-ui/core";
-import React, { useEffect } from "react";
-import { useNavigate, useParams } from "react-router";
+import { Grid, Paper, makeStyles, Button } from '@material-ui/core';
+import React, { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router';
 import {
   ImageWithZoom,
   Slider,
@@ -8,23 +8,24 @@ import {
   Slide,
   ButtonBack,
   ButtonNext,
-} from "pure-react-carousel";
-import "pure-react-carousel/dist/react-carousel.es.css";
-import { grey, lightGreen } from "@material-ui/core/colors";
-import { useRooms } from "../../contexts/RoomsContext";
-import MySpinner from "../shared/MySpinner";
+} from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import { grey, lightGreen } from '@material-ui/core/colors';
+import { useRooms } from '../../contexts/RoomsContext';
+import MySpinner from '../shared/MySpinner';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   custom_container: {
-    marginTop: "0",
-    alignItems: "center",
+    marginTop: '0',
+    alignItems: 'center',
   },
   paper: {
     padding: theme.spacing(1),
     color: theme.palette.text.primary,
-    textAlign: "left",
-    backgroundColor: "honeydew",
-    minHeight: "400px",
+    textAlign: 'left',
+    backgroundColor: 'honeydew',
+    minHeight: '400px',
   },
 }));
 
@@ -39,7 +40,7 @@ const RoomsDetails = () => {
 
   const handleRedirectAfterDelete = () => {
     deleteRoom(id);
-    navigate("/");
+    navigate('/');
   };
   const classes = useStyles();
   return (
@@ -90,7 +91,7 @@ const RoomsDetails = () => {
                   {/* {roomDetails.salePrice ? (
                     <tr>
                       <th> Sale Price:</th>
-                      <td>{productDetails.salePrice}</td>
+                      <td>{roomDetails.salePrice}</td>
                     </tr>
                   ) : null} */}
                   <br />
@@ -105,8 +106,18 @@ const RoomsDetails = () => {
               onClick={() => handleRedirectAfterDelete(roomDetails.id)}
               variant="contained"
               color="secondary"
+              style={{margin:5}}
             >
               Delete
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+            >
+              <Link to={`/edit/${roomDetails.id}`}>
+
+              Edit
+              </Link>
             </Button>
           </Grid>
         </Grid>

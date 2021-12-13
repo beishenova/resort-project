@@ -30,12 +30,12 @@ const useStyles = makeStyles({
 const RoomCard = ({ room, cart }) => {
   const classes = useStyles();
   const { addAndDeleteRoomInCart } = useRooms();
-//   const isItemInCart = () => {
-//     if (cart) {
-//       return checkItemInCart(cart.rooms, room.id);
-//     }
-//     return false;
-//   };
+  // const isItemInCart = () => {
+  //   if (cart) {
+  //     return checkItemInCart(cart.rooms, room.id);
+  //   }
+  //   return false;
+  // };
 
   return (
     <Card className={classes.root}>

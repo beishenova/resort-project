@@ -5,6 +5,7 @@ export const GET_ROOM_LOADING = 'GET_ROOM_LOADING';
 export const GET_ROOM_SUCCESS = 'GET_ROOM_SUCCESS';
 export const GET_ROOM_ERROR = 'GET_ROOM_ERROR';
 export const GET_ROOM = 'GET_ROOM';
+export const GET_ROOM_DETAILS = 'GET_ROOM_DETAILS';
 export const ADD_AND_DELETE_ROOM_IN_CART = 'ADD_AND_DELETE_ROOM_IN_CART';
 export const GET_ROOM_INFO = ' GET_ROOM_INFO';
 export const SET_USER = 'SET_USER';

@@ -16,9 +16,9 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Button, ClickAwayListener } from '@material-ui/core';
 import { useAuth } from '../../contexts/AuthContext';
-import './Header.css'
+import './Header.css';
 import { Link } from 'react-router-dom';
-import Search from '@material-ui/icons/Search';
+import Search from './Search';
 import { useRooms } from '../../contexts/RoomsContext';
 
 const useStyles = makeStyles((theme) => ({
@@ -89,10 +89,9 @@ export default function Header() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-    const [searchActive, setSearchActive] = React.useState(false);
+  const [searchActive, setSearchActive] = React.useState(false);
 
-  
-  const { cartData, fetchSearchRooms } = useRooms()
+  const { cartData, fetchSearchRooms } = useRooms();
   const { registerUser, user, logOut } = useAuth();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -176,19 +175,18 @@ export default function Header() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" style={{backgroundColor:"beige"}}>
         <Toolbar>
           <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
-          >
-          </IconButton>
+          ></IconButton>
           <Link to="/">
-          <Typography className={classes.title} variant="h6" noWrap>
-            Ressort
-          </Typography>
+            <Typography className={classes.title} variant="h6" noWrap>
+              Ressort
+            </Typography>
           </Link>
           <ClickAwayListener onClickAway={() => setSearchActive(false)}>
             <div className={classes.search}>
@@ -203,11 +201,11 @@ export default function Header() {
                   input: classes.inputInput,
                 }}
                 onChange={handleSearch}
-                inputProps={{ "aria-label": "search" }}
+                inputProps={{ 'aria-label': 'search' }}
               />
               {searchActive && (
                 <div className={classes.searchBox}>
-                  {/* <Search /> */}
+                  <Search />
                 </div>
               )}
             </div>
@@ -215,7 +213,7 @@ export default function Header() {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-          {user ? (
+            {user ? (
               <>
                 <p>{user.email}</p>
                 <IconButton onClick={() => logOut()}>
