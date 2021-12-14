@@ -5,6 +5,7 @@ import { $api } from '../service/axios-config';
 import {
   ADD_AND_DELETE_ROOM_IN_CART,
   ADD_AND_DELETE_ROOM_IN_FAVORITE,
+  GET_FAVORITE,
   GET_ROOM,
   GET_ROOMS_ERROR,
   GET_ROOMS_LOADING,
@@ -34,7 +35,7 @@ export const useRooms = () => useContext(roomsContext);
 const initialState = {
   loading: false,
   error: null,
-  isFavorite: false,
+  favorite: [],
   rooms: [],
   roomDetails: {
     loading: false,
@@ -102,6 +103,13 @@ const reducer = (state, action) => {
       };
     }
 
+    case GET_FAVORITE: {
+      return {
+        ...state,
+        favorite: action.payload,
+      };
+    }
+
     case GET_ROOM_DETAILS: {
       return {
         ...state,
@@ -131,7 +139,7 @@ const RoomsContext = ({ children }) => {
   const fetchRooms = async () => {
     dispatch(roomsLoading());
     try {
-      const { data } = await $api(`${window.location.search}`);
+      const { data } = await $api(`/rooms${window.location.search}`);
 
       dispatch(roomsSuccess(data));
     } catch (error) {
@@ -143,7 +151,7 @@ const RoomsContext = ({ children }) => {
   const fetchOneRoom = async (id) => {
     dispatch(roomLoading());
     try {
-      const { data } = await $api(`/${id}`);
+      const { data } = await $api(`/rooms/${id}`);
       dispatch(roomSuccess(data));
     } catch (error) {
       console.log(error.message);
@@ -153,7 +161,7 @@ const RoomsContext = ({ children }) => {
 
   const getRoomDetails = async (id) => {
     try {
-      const { data } = await $api(`/${id}`);
+      const { data } = await $api(`/rooms/${id}`);
       dispatch({
         type: GET_ROOM_DETAILS,
         payload: data,
@@ -162,18 +170,30 @@ const RoomsContext = ({ children }) => {
       console.log(error);
     }
   };
+  const getFavorite = async () => {
+    try {
+      const { data } = await $api(`/favorite`);
+      console.log(data, 'favorite from context');
+      dispatch({
+        type: GET_FAVORITE,
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  const addAndDeleteRoomInfavorite = async(room) => {
-    try{
-      const{data} = await $api.post(`/favorite`, room)
+  const addAndDeleteRoomInfavorite = async (room) => {
+    try {
+      const { data } = await $api.post(`/favorite`, room);
       dispatch({
         type: ADD_AND_DELETE_ROOM_IN_FAVORITE,
         payload: data,
-      })
-    }catch(error){
-      console.log(error)
+      });
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 
   const fetchByParams = async (query, value) => {
     const search = new URLSearchParams(location.search);
@@ -197,7 +217,7 @@ const RoomsContext = ({ children }) => {
         dispatch(setSearchResults([]));
         return;
       }
-      const { data } = await $api(`?q=${value}`);
+      const { data } = await $api(`/rooms/?q=${value}`);
       dispatch(setSearchResults(data));
     } catch (e) {
       console.log(e.message);
@@ -208,7 +228,7 @@ const RoomsContext = ({ children }) => {
     console.log(newRoom);
 
     try {
-      await $api.post('/', newRoom);
+      await $api.post('/rooms/', newRoom);
     } catch (error) {
       console.log(error.message);
     }
@@ -216,7 +236,7 @@ const RoomsContext = ({ children }) => {
 
   const deleteRoom = async (id) => {
     try {
-      await $api.delete(`/${id}`);
+      await $api.delete(`/rooms/${id}`);
     } catch (e) {
       console.log(e.message);
     }
@@ -224,7 +244,7 @@ const RoomsContext = ({ children }) => {
 
   const editRoom = (room) => {
     try {
-      return $api.patch(`/${room.id}`, room);
+      return $api.patch(`/rooms/${room.id}`, room);
     } catch (error) {
       console.log(error);
     }
@@ -232,6 +252,7 @@ const RoomsContext = ({ children }) => {
 
   const values = {
     rooms: state.rooms,
+    favorite: state.favorite,
     loading: state.loading,
     error: state.error,
     roomDetailsLoading: state.roomDetails.loading,
@@ -246,6 +267,7 @@ const RoomsContext = ({ children }) => {
     addAndDeleteRoomInfavorite,
     fetchSearchRooms,
     addRoom,
+    getFavorite,
     deleteRoom,
   };
 

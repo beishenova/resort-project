@@ -31,6 +31,8 @@ const Content = () => {
     // }
   }, [location.search]);
 
+  useEffect(() => {}, []);
+
   return (
     <Grid item md={9}>
       {loading && <MySpinner size={50} />}

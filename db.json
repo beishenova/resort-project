@@ -34,7 +34,7 @@
     },
     {
       "title": "Президентский номер",
-      "image": "https://kidpassage.com/images/publications/tipyi-nomerov-v-otelyah-rashifrovka-klassifikatsiya-opisanie/1267_room-type.jpg",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOU44SStzbgnYdlWmYhs_zeCzf6YFgItIN4cPYYKvKZtgxNm_RVTmk6kLw1ENj0Xq53Zo&usqp=CAU",
       "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
       "price": "55000",
       "person": 3,
@@ -49,7 +49,22 @@
       "id": 7
     }
   ],
-  "favorite":[
-
+  "favorite": [
+    {
+      "title": "Номер на двоих",
+      "image": "https://bakkara-hotel.com.ua/wp-content/uploads/2018/06/mg-4822-hdr-1902x1268.jpg",
+      "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
+      "price": "12000",
+      "person": 2,
+      "id": 2
+    },
+    {
+      "title": "Стандартный номер с одной кроватью",
+      "image": "https://hotelnogai.ru/wp-content/uploads/2016/02/%D0%A1%D1%82%D0%B0%D0%BD%D0%B4_%D0%9A%D0%B8%D0%BD%D0%B3_1-1620x1080.jpg",
+      "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
+      "price": "10000",
+      "person": 2,
+      "id": 3
+    }
   ]
 }

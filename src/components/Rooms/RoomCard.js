@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-const RoomCard = ({ room, cart }) => {
+const RoomCard = ({ room }) => {
   const classes = useStyles();
   const {addAndDeleteRoomInfavorite} = useRooms()
 
