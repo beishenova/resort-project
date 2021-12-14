@@ -9,14 +9,6 @@
       "person": 2
     },
     {
-      "title": "Семейный номер",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9PnCh4z8xNHFN_7PFjQTd02QoHA6FNzG5lQ&usqp=CAU",
-      "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
-      "price": "35000",
-      "person": 4,
-      "id": 1
-    },
-    {
       "title": "Номер на двоих",
       "image": "https://bakkara-hotel.com.ua/wp-content/uploads/2018/06/mg-4822-hdr-1902x1268.jpg",
       "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
@@ -46,14 +38,6 @@
       "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
       "price": "55000",
       "person": 3,
-      "id": 5
-    },
-    {
-      "title": "Президентский номер",
-      "image": "https://kidpassage.com/images/publications/tipyi-nomerov-v-otelyah-rashifrovka-klassifikatsiya-opisanie/1267_room-type.jpg",
-      "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
-      "price": "55000",
-      "person": 3,
       "id": 6
     },
     {
@@ -63,14 +47,9 @@
       "price": "55000",
       "person": 3,
       "id": 7
-    },
-    {
-      "title": "Домик",
-      "image": "https://icdn.lenta.ru/images/2017/08/17/16/20170817164206150/pic_62f5cbf74efa6aae4b8b2318a9b1bf36.jpg",
-      "description": "Прикольчики",
-      "price": "122333",
-      "person": 2,
-      "id": 8
     }
+  ],
+  "favorite":[
+
   ]
 }

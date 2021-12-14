@@ -5,9 +5,9 @@ import RoomCard from './RoomCard';
 const RoomsList = ({ rooms }) => {
   // const cart = JSON.parse(localStorage.getItem('cart')) ?? false;
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={3}>
       {rooms.map((room) => (
-        <Grid item xs={3} key={room.id}>
+        <Grid item xs={4} key={room.id}>
           <RoomCard room={room}/>
         </Grid>
       ))}

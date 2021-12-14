@@ -32,7 +32,7 @@ const Content = () => {
   }, [location.search]);
 
   return (
-    <Grid item md={12}>
+    <Grid item md={9}>
       {loading && <MySpinner size={50} />}
       {!loading && error && <h2>{error}</h2>}
       {!loading && rooms.length > 0 && <RoomsList rooms={paginateRooms} />}

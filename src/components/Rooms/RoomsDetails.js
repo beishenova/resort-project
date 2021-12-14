@@ -46,7 +46,7 @@ const RoomsDetails = () => {
   return (
     <Grid container>
       {roomDetails ? (
-        <Grid container className={classes.custom_container}>
+        <Grid container className={classes.custom_container} style={{margin: 20}}>
           <Grid item md={3}>
             <CarouselProvider
               naturalSlideWidth={2000}

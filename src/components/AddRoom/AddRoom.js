@@ -41,8 +41,7 @@ const AddRoom = () => {
    };
    //   console.log(form);
    return (
-     <div className="adding">
-       <h1>Add new Room</h1>
+     <div className="adding" style={{margin: 10}}>
        <Grid container className="main">
          <Grid item md={5}>
            <Paper elevation={5} className="paper">

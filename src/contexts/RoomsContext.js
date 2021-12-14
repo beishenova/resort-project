@@ -165,7 +165,7 @@ const RoomsContext = ({ children }) => {
 
   const addAndDeleteRoomInfavorite = async(room) => {
     try{
-      const{data} = await $api(`/${room.id}`, room)
+      const{data} = await $api.post(`/favorite`, room)
       dispatch({
         type: ADD_AND_DELETE_ROOM_IN_FAVORITE,
         payload: data,
