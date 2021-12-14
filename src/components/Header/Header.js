@@ -91,7 +91,7 @@ export default function Header() {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [searchActive, setSearchActive] = React.useState(false);
 
-  const { cartData, fetchSearchRooms } = useRooms();
+  const { fetchSearchRooms } = useRooms();
   const { registerUser, user, logOut } = useAuth();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);

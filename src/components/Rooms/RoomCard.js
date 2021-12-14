@@ -1,5 +1,5 @@
 import { Grid, IconButton } from "@material-ui/core";
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -8,10 +8,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Shop } from "@material-ui/icons";
 import { useRooms } from "../../contexts/RoomsContext";
-import { checkItemInCart } from "../../utils/check-item-in-cart";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -29,13 +27,7 @@ const useStyles = makeStyles({
 
 const RoomCard = ({ room, cart }) => {
   const classes = useStyles();
-  const { addAndDeleteRoomInCart } = useRooms();
-  // const isItemInCart = () => {
-  //   if (cart) {
-  //     return checkItemInCart(cart.rooms, room.id);
-  //   }
-  //   return false;
-  // };
+  const {addAndDeleteRoomInfavorite} = useRooms()
 
   return (
     <Card className={classes.root}>
@@ -68,15 +60,12 @@ const RoomCard = ({ room, cart }) => {
         </CardActionArea>
       </Link>
       <CardActions className={classes.actions}>
-        {/* <IconButton color={isItemInCart() ? "secondary" : "primary"}>
-          <ShoppingCartIcon />
-        </IconButton> */}
         <Button
-          onClick={() => addAndDeleteRoomInCart(room)}
+          onClick={() => addAndDeleteRoomInfavorite(room)}
           color="secondary"
           variant="contained"
         >
-          Забронировать 
+          Добавить в избранное
         </Button>
       </CardActions>
     </Card>

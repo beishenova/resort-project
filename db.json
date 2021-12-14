@@ -9,115 +9,67 @@
       "person": 2
     },
     {
-      "title": "Номер на одного человека",
-      "image": "https://gogolhotel.ru/images/r3.jpg",
+      "title": "Семейный номер",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9PnCh4z8xNHFN_7PFjQTd02QoHA6FNzG5lQ&usqp=CAU",
       "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
-      "price": "15000",
-      "person": 1,
+      "price": "35000",
+      "person": 4,
       "id": 1
     },
     {
-      "title": "Номер на одного человека",
-      "image": "https://gogolhotel.ru/images/r3.jpg",
+      "title": "Номер на двоих",
+      "image": "https://bakkara-hotel.com.ua/wp-content/uploads/2018/06/mg-4822-hdr-1902x1268.jpg",
       "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
-      "price": "15000",
-      "person": 1,
-      "id": 1
+      "price": "12000",
+      "person": 2,
+      "id": 2
     },
     {
-      "title": "Номер на одного человека",
-      "image": "https://gogolhotel.ru/images/r3.jpg",
+      "title": "Стандартный номер с одной кроватью",
+      "image": "https://hotelnogai.ru/wp-content/uploads/2016/02/%D0%A1%D1%82%D0%B0%D0%BD%D0%B4_%D0%9A%D0%B8%D0%BD%D0%B3_1-1620x1080.jpg",
       "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
-      "price": "15000",
-      "person": 1,
-      "id": 1
+      "price": "10000",
+      "person": 2,
+      "id": 3
     },
     {
-      "title": "Номер на одного человека",
-      "image": "https://gogolhotel.ru/images/r3.jpg",
+      "title": "Президентский номер",
+      "image": "https://kidpassage.com/images/publications/tipyi-nomerov-v-otelyah-rashifrovka-klassifikatsiya-opisanie/1267_room-type.jpg",
       "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
-      "price": "15000",
-      "person": 1,
-      "id": 1
+      "price": "55000",
+      "person": 3,
+      "id": 4
     },
     {
-      "title": "Номер на одного человека",
-      "image": "https://gogolhotel.ru/images/r3.jpg",
+      "title": "Президентский номер",
+      "image": "https://kidpassage.com/images/publications/tipyi-nomerov-v-otelyah-rashifrovka-klassifikatsiya-opisanie/1267_room-type.jpg",
       "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
-      "price": "15000",
-      "person": 1,
-      "id": 1
+      "price": "55000",
+      "person": 3,
+      "id": 5
     },
     {
-      "title": "Номер на одного человека",
-      "image": "https://gogolhotel.ru/images/r3.jpg",
+      "title": "Президентский номер",
+      "image": "https://kidpassage.com/images/publications/tipyi-nomerov-v-otelyah-rashifrovka-klassifikatsiya-opisanie/1267_room-type.jpg",
       "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
-      "price": "15000",
-      "person": 1,
-      "id": 1
+      "price": "55000",
+      "person": 3,
+      "id": 6
     },
     {
-      "title": "Номер на одного человека",
-      "image": "https://gogolhotel.ru/images/r3.jpg",
+      "title": "Президентский номер",
+      "image": "https://kidpassage.com/images/publications/tipyi-nomerov-v-otelyah-rashifrovka-klassifikatsiya-opisanie/1267_room-type.jpg",
       "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
-      "price": "15000",
-      "person": 1,
-      "id": 1
-    },
-    {
-      "title": "Номер на одного человека",
-      "image": "https://gogolhotel.ru/images/r3.jpg",
-      "description": "Отель находится в шаговой доступности ко всем коммуникациям, оснащен всеми удобствами для комфортного проживания в номере",
-      "price": "15000",
-      "person": 1,
-      "id": 1
+      "price": "55000",
+      "person": 3,
+      "id": 7
     },
     {
       "title": "Домик",
       "image": "https://icdn.lenta.ru/images/2017/08/17/16/20170817164206150/pic_62f5cbf74efa6aae4b8b2318a9b1bf36.jpg",
       "description": "Прикольчики",
       "price": "122333",
-      "person": 1,
-      "id": 3
-    },
-    {
-      "title": "sdfghj",
-      "image": "ghjk",
-      "description": "dfghjk",
-      "price": "465768",
-      "person": 1,
-      "id": 4
-    },
-    {
-      "title": "sdfghj",
-      "image": "ghjk",
-      "description": "dfghjk",
-      "price": "465768",
-      "person": 1,
-      "id": 5
-    },
-    {
-      "title": "sdfghj",
-      "image": "ghjk",
-      "description": "dfghjk",
-      "price": "465768",
-      "person": 1,
-      "id": 6
-    },
-    {
-      "title": "sdfghj",
-      "image": "ghjk",
-      "description": "dfghjk",
-      "price": "465768",
-      "person": 1,
-      "id": 7
-    },
-    {
-      "title": "sdfghj",
-      "image": "ghjk",
-      "description": "dfghjk",
-      "price": "465768",
-      "person": 1,
+      "person": 2,
       "id": 8
     }
   ]

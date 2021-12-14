@@ -2,10 +2,9 @@ import axios from 'axios';
 import React, { createContext, useContext, useReducer } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { $api } from '../service/axios-config';
-import { calcSubPrice, calcTotalPrice } from '../utils/calc';
-import { checkItemInCart } from '../utils/check-item-in-cart';
 import {
   ADD_AND_DELETE_ROOM_IN_CART,
+  ADD_AND_DELETE_ROOM_IN_FAVORITE,
   GET_ROOM,
   GET_ROOMS_ERROR,
   GET_ROOMS_LOADING,
@@ -35,16 +34,13 @@ export const useRooms = () => useContext(roomsContext);
 const initialState = {
   loading: false,
   error: null,
+  isFavorite: false,
   rooms: [],
   roomDetails: {
     loading: false,
     error: null,
     room: null,
   },
-  // cartData: JSON.parse(localStorage.getItem('cart'))
-  //   ? JSON.parse(localStorage.getItem('cart')).rooms.length
-  //   : 0,
-  // cart: {},
   searchResults: [],
 };
 
@@ -92,16 +88,17 @@ const reducer = (state, action) => {
         },
       };
 
-    case ADD_AND_DELETE_ROOM_IN_CART: {
-      return {
-        ...state,
-        cartData: action.payload,
-      };
-    }
     case GET_ROOM: {
       return {
         ...state,
         cart: action.payload,
+      };
+    }
+
+    case ADD_AND_DELETE_ROOM_IN_FAVORITE: {
+      return {
+        ...state,
+        room: action.payload,
       };
     }
 
@@ -156,7 +153,7 @@ const RoomsContext = ({ children }) => {
 
   const getRoomDetails = async (id) => {
     try {
-      const { data } = await axios(`$api/${id}`);
+      const { data } = await $api(`/${id}`);
       dispatch({
         type: GET_ROOM_DETAILS,
         payload: data,
@@ -166,60 +163,17 @@ const RoomsContext = ({ children }) => {
     }
   };
 
-  const addAndDeleteRoomInCart = (room) => {
-    let cart = JSON.parse(localStorage.getItem('cart'));
-    if (!cart) {
-      cart = {
-        rooms: [],
-        totalPrice: 0,
-      };
+  const addAndDeleteRoomInfavorite = async(room) => {
+    try{
+      const{data} = await $api(`/${room.id}`, room)
+      dispatch({
+        type: ADD_AND_DELETE_ROOM_IN_FAVORITE,
+        payload: data,
+      })
+    }catch(error){
+      console.log(error)
     }
-    let newRoom = {
-      count: 1,
-      subPrice: 0,
-      room: room,
-    };
-    console.log(newRoom);
-    newRoom.subPrice = calcSubPrice(newRoom);
-
-    const isItemInCart = checkItemInCart(cart.rooms, room.id);
-    if (isItemInCart) {
-      cart.rooms = cart.rooms.filter((item) => item.room.id !== room.id);
-    } else {
-      cart.rooms.push(newRoom);
-    }
-    cart.totalPrice = calcTotalPrice(cart.rooms);
-
-    console.log(cart, 'cart');
-    localStorage.setItem('cart', JSON.stringify(cart));
-    dispatch({
-      type: ADD_AND_DELETE_ROOM_IN_CART,
-      payload: cart.rooms.length,
-    });
-  };
-
-  const getCart = () => {
-    let cartFromLS = JSON.parse(localStorage.getItem('cart'));
-    dispatch({
-      type: GET_ROOM,
-      payload: cartFromLS,
-    });
-    console.log(cartFromLS);
-  };
-
-  const changeRoomCount = (newCount, id) => {
-    const cart = JSON.parse(localStorage.getItem('cart'));
-    cart.rooms = cart.rooms.map((item) => {
-      if (item.room.id === id) {
-        item.count = newCount;
-        item.subPrice = calcSubPrice(item);
-      }
-      return item;
-    });
-    cart.totalPrice = calcTotalPrice(cart.rooms);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    getCart();
-  };
+  }
 
   const fetchByParams = async (query, value) => {
     const search = new URLSearchParams(location.search);
@@ -233,12 +187,8 @@ const RoomsContext = ({ children }) => {
       search.set(query, value);
     }
 
-    // console.log(search.toString());
     const url = `${location.pathname}?${search.toString()}`;
     navigate(url);
-
-    // const { data } = await $api(``);
-    // dispatch(productsSuccess(data));
   };
 
   const fetchSearchRooms = async (value) => {
@@ -248,7 +198,6 @@ const RoomsContext = ({ children }) => {
         return;
       }
       const { data } = await $api(`?q=${value}`);
-      // console.log(data);
       dispatch(setSearchResults(data));
     } catch (e) {
       console.log(e.message);
@@ -288,17 +237,13 @@ const RoomsContext = ({ children }) => {
     roomDetailsLoading: state.roomDetails.loading,
     roomDetails: state.roomDetails.room,
     roomDetailsError: state.roomDetails.error,
-    cartData: state.cartData,
-    cart: state.cart,
     searchResults: state.searchResults,
     fetchRooms,
     fetchOneRoom,
-    addAndDeleteRoomInCart,
-    getCart,
-    changeRoomCount,
     editRoom,
     getRoomDetails,
     fetchByParams,
+    addAndDeleteRoomInfavorite,
     fetchSearchRooms,
     addRoom,
     deleteRoom,

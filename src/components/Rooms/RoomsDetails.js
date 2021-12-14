@@ -88,13 +88,6 @@ const RoomsDetails = () => {
                     <td>{roomDetails.description}</td>
                   </tr>
                   <br />
-                  {/* {roomDetails.salePrice ? (
-                    <tr>
-                      <th> Sale Price:</th>
-                      <td>{roomDetails.salePrice}</td>
-                    </tr>
-                  ) : null} */}
-                  <br />
                   <tr>
                     <th> На сколько персон:</th>
                     <td>{roomDetails.person}</td>
